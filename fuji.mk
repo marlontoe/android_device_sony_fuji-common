@@ -112,6 +112,11 @@ PRODUCT_PACKAGES += \
     libaudioutils
     #audio_policy.conf
 
+# Voice processing
+PRODUCT_PACKAGES += libqcomvoiceprocessing
+PRODUCT_COPY_FILES += \
+    device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
+
 # Camera wrapper
 #PRODUCT_PACKAGES += \
 #    camera.fuji
@@ -217,7 +222,7 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcommRIL \
+    ro.telephony.ril_class=SonyQualcomm8x60RIL \
     ro.telephony.ril.v3=skippinpukcount,qcomdsds \
     ro.telephony.call_ring.multiple=false \
     persist.rild.nitz_plmn= \
@@ -237,15 +242,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
     ro.ril.transmitpower=true
 
-
 # USB Debugging
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
     persist.sys.usb.config=mtp,adb
-
-    
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
