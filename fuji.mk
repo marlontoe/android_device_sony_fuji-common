@@ -139,7 +139,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS Config
 PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/rootdir/system/etc/gps.conf:system/etc/gps.conf
+    $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -292,6 +292,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
+
+# KSM/UKSM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.uksm.default=1
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
