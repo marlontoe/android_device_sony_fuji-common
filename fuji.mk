@@ -110,16 +110,11 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8660 \
     libaudio-resampler \
     libaudioutils
-    #audio_policy.conf
 
 # Voice processing
 PRODUCT_PACKAGES += libqcomvoiceprocessing
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
-
-# Camera wrapper
-#PRODUCT_PACKAGES += \
-#    camera.fuji
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -268,7 +263,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -283,6 +277,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low Power Audio Decoding
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
+
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
 
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
