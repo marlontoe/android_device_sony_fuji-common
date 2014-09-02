@@ -536,7 +536,7 @@ on property:ro.ksm.default=1
 
 # UKSM
 on property:ro.uksm.default=1
-    write /sys/kernel/mm/uksm/sleep_millisecs 50
+    write /sys/kernel/mm/uksm/sleep_millisecs 500
     write /sys/kernel/mm/uksm/max_cpu_percentage 90
     write /sys/kernel/mm/uksm/cpu_governor full
     write /sys/kernel/mm/uksm/run 1
