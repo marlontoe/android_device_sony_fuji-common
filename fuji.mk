@@ -166,6 +166,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+
 # Custom init / uevent
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/init.semc.rc:root/init.semc.rc \
@@ -288,6 +289,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
+
+# KSM/UKSM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.uksm.default=1
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
