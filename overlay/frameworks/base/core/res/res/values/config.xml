@@ -219,5 +219,8 @@
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
     <integer name="config_deviceHardwareKeys">39</integer>
+    
+     <!-- Variable brightness for our Illumination Bar -->
+     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
 </resources>
