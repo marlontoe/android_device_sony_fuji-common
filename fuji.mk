@@ -167,7 +167,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-
 # Custom init / uevent
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/init.semc.rc:root/init.semc.rc \
@@ -270,7 +269,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -286,10 +284,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=180
 
 # KSM/UKSM
 PRODUCT_PROPERTY_OVERRIDES += \
