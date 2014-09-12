@@ -299,3 +299,4 @@ PRODUCT_PACKAGES += Apollo
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
+
