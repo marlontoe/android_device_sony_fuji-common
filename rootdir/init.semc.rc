@@ -64,6 +64,9 @@ on post-fs
     # Camera
     mkdir /data/camera 0771 root camera
 
+	# Create /data/time folder for time-services
+	mkdir /data/time/ 0700 system system
+
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -78,9 +81,6 @@ on post-fs
     exec /system/bin/sh /system/etc/pre_hw_config.sh
 
 on early-boot
-    # Exec bootsel to select boot mode.
-    exec /sbin/bootsel.sh
-
     # Start the offline charging (This blocks booting further in some cases)
     exec /system/bin/chargemon
 
@@ -205,10 +205,10 @@ on boot
 
     # power-management
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor lionheart
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     # need to force cpu1 online every time to set values
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor lionheart
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     # need to force cpu1 online every time to set values
@@ -484,9 +484,15 @@ service thermald /system/bin/thermald -c /system/etc/thermald-semc.conf
     user root
     disabled
 
+
 service qrngd /system/bin/qrngd -f
     class late_start
     user root
+
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
 
 service qseecomd /system/bin/qseecomd
     class late_start

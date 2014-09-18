@@ -120,12 +120,11 @@ BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
 # Legacy define
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
+# CM Hardware Class
+BOARD_HARDWARE_CLASS := hardware/sony/cmhw
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
@@ -143,6 +142,9 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/fuji-common/bluedroid/bluetooth.c
 BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
+
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
 
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
