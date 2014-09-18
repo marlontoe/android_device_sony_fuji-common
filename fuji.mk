@@ -107,16 +107,6 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8660 \
     libaudio-resampler \
     libaudioutils
-    #audio_policy.conf
-
-# Voice processing
-PRODUCT_PACKAGES += libqcomvoiceprocessing
-PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
-
-# Camera wrapper
-#PRODUCT_PACKAGES += \
-#    camera.fuji
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -285,10 +275,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=180
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/qcom-vendor.mk)
