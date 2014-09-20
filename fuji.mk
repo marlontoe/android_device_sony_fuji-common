@@ -114,10 +114,6 @@ PRODUCT_PACKAGES += libqcomvoiceprocessing
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
-# Camera wrapper
-#PRODUCT_PACKAGES += \
-#    camera.fuji
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8660 \
@@ -267,9 +263,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
     debug.egl.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
+    debug.sf.hw=1 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -285,6 +280,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
@@ -298,5 +297,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += Apollo
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
-
+$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/qcom-vendor.mk)
