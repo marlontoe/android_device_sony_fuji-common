@@ -100,12 +100,14 @@ BOARD_QCOM_TUNNEL_LPA_ENABLED := false
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 
 # Graphics
-COMMON_GLOBAL_CFLAGS += -DNUM_FB_DEVICES=2 -DSCREENSHOT_CLIENT_STRIDE_HACK
+COMMON_GLOBAL_CFLAGS += -DNUM_FB_DEVICES=3 -DSCREENSHOT_CLIENT_STRIDE_HACK
 TARGET_QCOM_DISPLAY_VARIANT := caf
-#TARGET_QCOM_MEDIA_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+TARGET_DISABLE_TRIPLE_BUFFERING := false
 
 # Use retire fence from MDP driver
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
@@ -116,14 +118,12 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 # Use reserved fields for fps
 TARGET_DISPLAY_USE_RESERVED_FIELDS := true
 
-# QCOM enhanced A/V
-#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 # EGL
 BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
 # Legacy define
 TARGET_PROVIDES_LIBLIGHTS := true
 
@@ -147,6 +147,9 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/fuji-common/bluedroid/bluetooth.c
 BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
 
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
+
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
@@ -155,9 +158,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/fuji-common/custombootimg.mk
-
-# AOSP releasetools extensions
-#TARGET_RELEASETOOLS_EXTENSIONS := device/sony/fuji-common
+TARGET_NO_SEPARATE_RECOVERY := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
