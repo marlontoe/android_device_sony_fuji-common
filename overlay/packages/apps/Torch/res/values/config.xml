@@ -22,9 +22,7 @@
     <!-- Full path to the sysfs toggle -->
     <string name="flashDevice">/sys/devices/i2c-3/3-0053/torch_enable</string>
 
-    <!-- Off setting -->
-    <integer name="valueOff">0</integer>
-    <!-- On setting -->
+    <!-- Lowest setting -->
     <integer name="valueOn">1</integer>
     <!-- Middle setting -->
     <integer name="valueHigh">-1</integer>
