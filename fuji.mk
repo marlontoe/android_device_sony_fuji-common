@@ -245,13 +245,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.service.adb.enable=1 \
     persist.sys.usb.config=mtp,adb
 
-#### Goo Manager support
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=RaymanFX \
-    ro.goo.board=$(subst full_,,$(TARGET_PRODUCT)) \
-    ro.goo.rom=opensemc_cm \
-    ro.goo.version=$(shell date +%s)
-
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true
@@ -290,10 +283,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.timed.enable=true
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=180
+
+# KSM/UKSM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.uksm.default=1
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/qcom-vendor.mk)
