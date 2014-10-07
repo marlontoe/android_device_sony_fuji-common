@@ -16,6 +16,10 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+# The gps config appropriate for this device
+PRODUCT_COPY_FILES := \
+    device/sony/fuji-common/rootdir/system/etc/gps.conf_EU_SUPL:system/etc/gps.conf
+
 DEVICE_PACKAGE_OVERLAYS += device/sony/fuji-common/overlay
 
 # Permissions
@@ -109,10 +113,9 @@ PRODUCT_PACKAGES += \
     libaudioutils
     #audio_policy.conf
 
-# Voice processing
-PRODUCT_PACKAGES += libqcomvoiceprocessing
-PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
+# Camera wrapper
+#PRODUCT_PACKAGES += \
+#    camera.fuji
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -132,10 +135,6 @@ PRODUCT_PACKAGES += \
 # Bluetooth vendor config
 PRODUCT_COPY_FILES += \
     device/sony/fuji-common/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
-
-# GPS Config
-PRODUCT_COPY_FILES += \
-    device/sony/fuji-common/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # Power HAL
 PRODUCT_PACKAGES += \

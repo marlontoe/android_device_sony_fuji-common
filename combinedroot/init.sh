@@ -29,9 +29,7 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 busybox mount -t ext4 ${BOOTREC_CACHE} /cache
 
-if busybox grep -q warmboot=0x77665502 /proc/cmdline ; then
-busybox echo "found reboot into recovery flag" >>boot.txt
-else
+if [ ! -f /cache/recovery/boot ]; then
 	# trigger amber LED
 	busybox echo 255 > ${BOOTREC_LED_RED}
 	busybox echo 0 > ${BOOTREC_LED_GREEN}
@@ -46,7 +44,8 @@ fi
 load_image=/sbin/ramdisk.cpio
 
 # boot decision
-if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; then
+if [ -s /dev/keycheck -o -e /cache/recovery/boot ]
+then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
 	busybox rm -fr /cache/recovery/boot
 	# trigger blue led
