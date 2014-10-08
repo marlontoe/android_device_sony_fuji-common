@@ -218,7 +218,7 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SonyQualcomm8x60RIL \
+    ro.telephony.ril_class=SonyQualcommRIL \
     ro.telephony.ril.v3=skippinpukcount,qcomdsds \
     ro.telephony.call_ring.multiple=false \
     persist.rild.nitz_plmn= \
@@ -293,4 +293,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.uksm.default=1
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/qcom-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/fuji-common-caf/fuji-common-vendor.mk)
