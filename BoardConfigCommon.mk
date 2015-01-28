@@ -147,6 +147,10 @@ TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/sony/fuji-common/bluedroid/bluetooth.c
 BOARD_BLUEDROID_VENDOR_CONF := device/sony/fuji-common/bluetooth/vnd_msm8660.txt
 
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
 
@@ -166,9 +170,6 @@ DEVICE_RESOLUTION := 720x1280
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_HAS_NO_REAL_SDCARD := true
 TW_NO_USB_STORAGE := true
-TW_FLASH_FROM_STORAGE := true
-TW_INTERNAL_STORAGE_PATH := "/sdcard"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 
 # Health Daemon
 BOARD_BATTERY_DEVICE_NAME := "semc_battery_data"

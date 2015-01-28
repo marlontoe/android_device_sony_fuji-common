@@ -271,6 +271,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
+    persist.hwc.mdpcomp.enable=true \
+    debug.composition.type=dyn \
+    debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -280,6 +283,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # More display props - double check these!
 PRODUCT_PROPERTY_OVERRIDES += \
+    dev.pm.dyn_samplingrate=1 \
     debug.hwc.dynThreshold=1.9
 
 # Low Power Audio Decoding
@@ -294,10 +298,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=180
-
-# KSM/UKSM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.uksm.default=1
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/fuji-common-caf/qcom-vendor.mk)
