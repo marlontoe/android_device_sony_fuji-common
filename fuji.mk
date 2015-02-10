@@ -143,6 +143,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# Recovery
+PRODUCT_PACKAGES += \
+    extract_elf_ramdisk
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -205,10 +209,6 @@ PRODUCT_COPY_FILES += \
 # Boot Logo
 PRODUCT_COPY_FILES += \
      device/sony/fuji-common/bootlogo/sony.rle:root/logo.rle
-
-# Extract recovery ramdisks
-PRODUCT_PACKAGES += \
-    extract_elf_ramdisk
 
 # Wifi
 PRODUCT_COPY_FILES += \

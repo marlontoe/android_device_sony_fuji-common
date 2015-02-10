@@ -29,16 +29,14 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 busybox mount -t ext4 ${BOOTREC_CACHE} /cache
 
-if [ ! -f /cache/recovery/boot ]; then
-	# trigger amber LED
-	busybox echo 255 > ${BOOTREC_LED_RED}
-	busybox echo 0 > ${BOOTREC_LED_GREEN}
-	busybox echo 255 > ${BOOTREC_LED_BLUE}
+# trigger amber LED
+busybox echo 255 > ${BOOTREC_LED_RED}
+busybox echo 0 > ${BOOTREC_LED_GREEN}
+busybox echo 255 > ${BOOTREC_LED_BLUE}
 
-	# keycheck
-	busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
-	busybox sleep 3
-fi
+# keycheck
+busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
+busybox sleep 3
 
 # android ramdisk
 load_image=/sbin/ramdisk.cpio
