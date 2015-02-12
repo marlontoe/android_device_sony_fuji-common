@@ -112,6 +112,11 @@ PRODUCT_PACKAGES += \
     libaudioutils
     #audio_policy.conf
 
+# Voice processing
+PRODUCT_PACKAGES += libqcomvoiceprocessing
+PRODUCT_COPY_FILES += \
+    device/sony/fuji-common/rootdir/system/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
+
 # Camera wrapper
 #PRODUCT_PACKAGES += \
 #    camera.fuji
@@ -264,8 +269,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     persist.hwc.mdpcomp.enable=true \
-    debug.composition.type=dyn \
-    debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0 \
     debug.egl.recordable.rgba8888=1
 
@@ -275,7 +278,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # More display props - double check these!
 PRODUCT_PROPERTY_OVERRIDES += \
-    dev.pm.dyn_samplingrate=1 \
     debug.hwc.dynThreshold=1.9
 
 # Low Power Audio Decoding

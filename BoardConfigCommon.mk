@@ -23,10 +23,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/sony/fuji-common/include
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8x60
 
-# QCOM hardware
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-BOARD_USES_QCOM_HARDWARE := true
-
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8660
 TARGET_BOARD_PLATFORM := msm8660
@@ -85,21 +81,25 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcm4330/parameters/firmware_pat
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4330b2.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4330b2_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4330b2_p2p.bin"
-#BOARD_LEGACY_NL80211_STA_EVENTS  := true
+
+# QCOM/CAF hardware
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf
+#TARGET_QCOM_MEDIA_VARIANT := caf
 
 # Audio
-TARGET_QCOM_AUDIO_VARIANT := caf
-COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DQCOM_VOIP_ENABLED
 BOARD_HAVE_SONY_AUDIO := true
 BOARD_HAVE_BACK_MIC_CAMCORDER := true
 BOARD_QCOM_TUNNEL_LPA_ENABLED := false
-#BOARD_USE_QCOM_LPA := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 
+#More Flags
+COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DQCOM_VOIP_ENABLED
+COMMON_GLOBAL_CFLAGS += -DSCREENSHOT_CLIENT_STRIDE_HACK
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+
 # Graphics
-COMMON_GLOBAL_CFLAGS += -DNUM_FB_DEVICES=2 -DSCREENSHOT_CLIENT_STRIDE_HACK
-TARGET_QCOM_DISPLAY_VARIANT := caf
-#TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 USE_OPENGL_RENDERER := true
@@ -113,19 +113,17 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 # Use reserved fields for fps
 TARGET_DISPLAY_USE_RESERVED_FIELDS := true
 
-# QCOM enhanced A/V
-#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 # EGL
 BOARD_EGL_CFG := device/sony/fuji-common/rootdir/system/lib/egl/egl.cfg
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
 # Legacy define
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# CM Hardware Class
-# BOARD_HARDWARE_CLASS := hardware/sony/cmhw
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
@@ -152,11 +150,10 @@ TARGET_FORCE_CPU_UPLOAD := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/fuji-common/custombootimg.mk
-
-# AOSP releasetools extensions
-#TARGET_RELEASETOOLS_EXTENSIONS := device/sony/fuji-common
+TARGET_NO_SEPARATE_RECOVERY := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
 
 # TWRP
 DEVICE_RESOLUTION := 720x1280
